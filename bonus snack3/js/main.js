@@ -24,15 +24,21 @@
 const arrayOfNumber = [0,1,2,3,4,5,6,7,8,9,10];
 console.log(arrayOfNumber);
 
-const newArrayOfNumber = filteredArray(arrayOfNumber, 7, 9);
+const newArrayOfNumber = filteredArray(arrayOfNumber, 7, 10);
 console.log(newArrayOfNumber); 
 
+const newArrayOfNumberWrong = filteredArray(arrayOfNumber, 10, 8);
+console.log(newArrayOfNumberWrong);
 
 //  FUNZIONI
 
 //  Dato in ingresso un array e due valori, minimo e massimo, restituisce un array con all'interno elemento compreso 
 //  tra gli indici corrispondenti di minimo e massimo dati in ingresso (indexMin deve essere < di indexMax)
 function filteredArray(array, indexMin, indexMax){
-    let newArray = array.filter((element, index) => ((index >= indexMin) && (index <= indexMax)));
-    return newArray;
+    if(indexMin < 0 || indexMin > indexMax || indexMax > array.length - 1){
+        console.log(`Il valore minimo inserito non può essere minore di 0 e non può essere maggiore del valore massimo inserito, il valore massimo inserito non può essere maggiore di ${array.length -1}`);
+    } else {
+        let newArray = array.filter((element, index) => ((index >= indexMin) && (index <= indexMax)));
+        return newArray;
+    }
 }
