@@ -57,14 +57,25 @@ let teamsArray = [
 //  Ciclo l'array e per ogni elemento dell'array genero numeri casuali da assegnare alle key 'punti fatti' e 'falli subiti'
 teamsArray.forEach(element => {
     const newPuntiFatti = randomNumber(0, 60);
-    const newFalliSubiti = randomNumber(0,20);
+    const newFalliSubiti = randomNumber(0, 20);
     element['punti fatti'] = newPuntiFatti;
     element['falli subiti'] = newFalliSubiti;
     console.log(element);
 });
 
+//  Ciclo l'array con il metodo .map() e genero un nuovo array che contenga gli stessi oggetti presenti nell'array teamsArray
+//  con riportate solo le coppie chiave/valore nome e 'falli subiti'
+const newTeamsArray = teamsArray.map(function(element){
+    let newObject = {};
+    const {nome, 'falli subiti':falliSubiti} = element;
+    console.log(`Il nome è ${nome} i falli subiti sono ${falliSubiti}`);
+    newObject.nome = nome;
+    newObject['falli subiti'] = falliSubiti;
+    return newObject;
+})
 
-
+//  Stampo in console l'array generato
+console.log(newTeamsArray);
 
 
 //  FUNZIONI
